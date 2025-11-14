@@ -12,9 +12,6 @@ spec:
     metadata:
       name: kubestellar-leader-election-role
     rules:
-      - apiGroups: [""]
-        resources: ["configmaps"]
-        verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
       - apiGroups: ["coordination.k8s.io"]
         resources: ["leases"]
         verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
@@ -111,11 +108,6 @@ spec:
       - kind: ServiceAccount
         name: default
         namespace: '{{"{{.Namespace}}"}}'
-  - apiVersion: v1
-    data: {}
-    kind: ConfigMap
-    metadata:
-      name: kubestellar-config
   - apiVersion: v1
     kind: Service
     metadata:
